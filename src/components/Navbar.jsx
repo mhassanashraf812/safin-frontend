@@ -83,29 +83,28 @@
 // }
 
 // export default Navbar
+
 "use client"
 
 import { useContext, useState } from "react"
 import { assets } from "../assets/assets"
 import { Link, NavLink } from "react-router-dom"
 import { ShopContext } from "../context/ShopContext"
-import { Facebook, Instagram, Mail, MessageCircle } from "lucide-react"
+// Remove Lucide icons import
+// Import Material UI icons
+import FacebookIcon from "@mui/icons-material/Facebook"
+import InstagramIcon from "@mui/icons-material/Instagram"
 
-// Custom TikTok icon since it's not in Lucide React by default
+// Custom TikTok icon using Material UI style
 const TikTok = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
     viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="lucide lucide-tiktok"
+    style={{ fill: "currentColor", color: "#000000" }}
   >
-    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
   </svg>
 )
 
@@ -124,10 +123,6 @@ const Navbar = () => {
 
   const openSocialLink = (url) => {
     window.open(url, "_blank")
-  }
-
-  const openWhatsApp = (number) => {
-    window.open(`https://wa.me/${number.replace(/\+/g, "")}`, "_blank")
   }
 
   const openEmail = (email) => {
@@ -162,26 +157,22 @@ const Navbar = () => {
       <div className="flex items-center gap-6">
         {/* Social Media Icons - Desktop */}
         <div className="hidden sm:flex items-center gap-3">
-          <Mail
-            onClick={() => openEmail("safeinofficial@gmail.com")}
-            className="w-4 h-4 cursor-pointer text-gray-700 hover:text-black transition-colors"
-          />
-          <Instagram
+          <InstagramIcon
             onClick={() => openSocialLink("https://www.instagram.com/safeincloset")}
-            className="w-4 h-4 cursor-pointer text-gray-700 hover:text-black transition-colors"
+            className="w-5 h-5 cursor-pointer text-[#E1306C] hover:opacity-80 transition-colors"
+            fontSize="small"
           />
-          <Facebook
+          <FacebookIcon
             onClick={() => openSocialLink("https://www.facebook.com/share/15vfRxGL7p/")}
-            className="w-4 h-4 cursor-pointer text-gray-700 hover:text-black transition-colors"
+            className="w-5 h-5 cursor-pointer text-[#1877F2] hover:opacity-80 transition-colors"
+            fontSize="small"
           />
-          <TikTok
+          <div
             onClick={() => openSocialLink("https://www.tiktok.com/@safein.closet?_t=ZS-8tzJUbsHJ28&_r=1")}
-            className="w-4 h-4 cursor-pointer text-gray-700 hover:text-black transition-colors"
-          />
-          <MessageCircle
-            onClick={() => openWhatsApp("+92 3314034851")}
-            className="w-4 h-4 cursor-pointer text-gray-700 hover:text-black transition-colors"
-          />
+            className="cursor-pointer hover:opacity-80 transition-colors"
+          >
+            <TikTok />
+          </div>
         </div>
 
         {/* Social Media Icon for Mobile - Shows dropdown */}
@@ -208,22 +199,12 @@ const Navbar = () => {
               <div className="flex flex-col gap-3 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
                 <div
                   onClick={() => {
-                    openEmail("safeinofficial@gmail.com")
-                    setSocialVisible(false)
-                  }}
-                  className="flex items-center gap-2 cursor-pointer hover:text-black"
-                >
-                  <Mail className="w-4 h-4" />
-                  <p>Email</p>
-                </div>
-                <div
-                  onClick={() => {
                     openSocialLink("https://www.instagram.com/safeincloset")
                     setSocialVisible(false)
                   }}
                   className="flex items-center gap-2 cursor-pointer hover:text-black"
                 >
-                  <Instagram className="w-4 h-4" />
+                  <InstagramIcon className="w-4 h-4 text-[#E1306C]" fontSize="small" />
                   <p>Instagram</p>
                 </div>
                 <div
@@ -233,7 +214,7 @@ const Navbar = () => {
                   }}
                   className="flex items-center gap-2 cursor-pointer hover:text-black"
                 >
-                  <Facebook className="w-4 h-4" />
+                  <FacebookIcon className="w-4 h-4 text-[#1877F2]" fontSize="small" />
                   <p>Facebook</p>
                 </div>
                 <div
@@ -245,16 +226,6 @@ const Navbar = () => {
                 >
                   <TikTok />
                   <p>TikTok</p>
-                </div>
-                <div
-                  onClick={() => {
-                    openWhatsApp("+92 3314034851")
-                    setSocialVisible(false)
-                  }}
-                  className="flex items-center gap-2 cursor-pointer hover:text-black"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <p>WhatsApp</p>
                 </div>
               </div>
             </div>
@@ -333,41 +304,31 @@ const Navbar = () => {
           <div className="py-3 pl-6 border">
             <p className="mb-2 font-medium">CONNECT WITH US</p>
             <div className="flex gap-4 mt-2">
-              <Mail
-                onClick={() => {
-                  openEmail("safeinofficial@gmail.com")
-                  setVisible(false)
-                }}
-                className="w-5 h-5 cursor-pointer text-gray-700 hover:text-black transition-colors"
-              />
-              <Instagram
+              <InstagramIcon
                 onClick={() => {
                   openSocialLink("https://www.instagram.com/safeincloset")
                   setVisible(false)
                 }}
-                className="w-5 h-5 cursor-pointer text-gray-700 hover:text-black transition-colors"
+                className="w-5 h-5 cursor-pointer text-[#E1306C] hover:opacity-80 transition-colors"
+                fontSize="small"
               />
-              <Facebook
+              <FacebookIcon
                 onClick={() => {
                   openSocialLink("https://www.facebook.com/share/15vfRxGL7p/")
                   setVisible(false)
                 }}
-                className="w-5 h-5 cursor-pointer text-gray-700 hover:text-black transition-colors"
+                className="w-5 h-5 cursor-pointer text-[#1877F2] hover:opacity-80 transition-colors"
+                fontSize="small"
               />
-              <TikTok
+              <div
                 onClick={() => {
                   openSocialLink("https://www.tiktok.com/@safein.closet?_t=ZS-8tzJUbsHJ28&_r=1")
                   setVisible(false)
                 }}
-                className="w-5 h-5 cursor-pointer text-gray-700 hover:text-black transition-colors"
-              />
-              <MessageCircle
-                onClick={() => {
-                  openWhatsApp("+92 3314034851")
-                  setVisible(false)
-                }}
-                className="w-5 h-5 cursor-pointer text-gray-700 hover:text-black transition-colors"
-              />
+                className="cursor-pointer hover:opacity-80 transition-colors"
+              >
+                <TikTok />
+              </div>
             </div>
           </div>
         </div>

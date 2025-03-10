@@ -95,18 +95,18 @@ const Collection = () => {
           <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Men'} onChange={toggleCategory}/> Stiched
+              <input className='w-3' type="checkbox" value={'Men'} onChange={toggleCategory}/> 2 - Piece
             </p>
             <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Women'} onChange={toggleCategory}/> Women
+              <input className='w-3' type="checkbox" value={'Women'} onChange={toggleCategory}/> 3 - piece
             </p>
-            <p className='flex gap-2'>
-              <input className='w-3' type="checkbox" value={'Unstiched'} onChange={toggleCategory}/> Unstiched
-            </p>
+            {/* <p className='flex gap-2'>
+              <input className='w-3' type="checkbox" value={'2 - piece'} onChange={toggleCategory}/> 2 - piece
+            </p> */}
           </div>
         </div>
         {/* SubCategory Filter */}
-        <div className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? '' :'hidden'} sm:block`}>
+        {/* <div className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? '' :'hidden'} sm:block`}>
           <p className='mb-3 text-sm font-medium'>TYPE</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
@@ -119,7 +119,7 @@ const Collection = () => {
               <input className='w-3' type="checkbox" value={'Summerwear'} onChange={toggleSubCategory}/> Summerwear
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Right Side */}
